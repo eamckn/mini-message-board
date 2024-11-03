@@ -15,3 +15,5 @@ const messages = [
     added: new Date(),
   },
 ];
+
+module.exports = { messages };
