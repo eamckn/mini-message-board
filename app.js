@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("node:path");
-const { messages } = require("./routes/index");
+const { messages, indexRouter } = require("./routes/index");
 const { newMessageRouter } = require("./routes/new");
 const PORT = 8080;
 
@@ -10,12 +10,18 @@ app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) =>
-  res.render("index", { title: "Mini messageboard", messages: messages })
-);
-
+app.use("/", indexRouter);
 app.use("/new", newMessageRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is currently running on port ${PORT}.`);
 });
+
+/*
+
+For open button
+- Create index router
+- Use index of array as req.param,
+- Res.render message, pass in user from array
+
+*/

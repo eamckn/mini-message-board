@@ -1,3 +1,6 @@
+const express = require("express");
+const indexRouter = express.Router();
+
 const messages = [
   {
     text: "Hi there!",
@@ -16,4 +19,13 @@ const messages = [
   },
 ];
 
-module.exports = { messages };
+indexRouter.get("/", (req, res) => {
+  res.render("index", { title: "Mini messageboard", messages: messages });
+});
+
+indexRouter.get("/messages/:index", (req, res) => {
+  const { index } = req.params;
+  res.render("message", { message: messages[index - 1] });
+});
+
+module.exports = { messages, indexRouter };

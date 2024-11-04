@@ -5,13 +5,18 @@
     <title>Index page</title>
   </head>
   <body>
+    <h1><%= title %></h1>
     <% messages.forEach(message => { %>
     <div>
-      <p>Message: <%= message.text %></p>
-      <p>Posted by: <%= message.user %></p>
+      <p>From: <%= message.user %></p>
       <p>At <%= message.added %></p>
+      <p>
+        Click
+        <a href="./messages/<%= messages.indexOf(message) + 1 %>">here</a>
+        to view their message
+      </p>
     </div>
     <% }) %>
-    <a href="http://localhost:8080/new">Click here to create a new message</a>
+    <a href="./new">Click here to create a new message</a>
   </body>
 </html>
