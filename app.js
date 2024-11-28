@@ -1,7 +1,8 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const path = require("node:path");
-const { messages, indexRouter } = require("./routes/index");
+const { indexRouter } = require("./routes/index");
 const { newMessageRouter } = require("./routes/new");
 const PORT = 8080;
 
